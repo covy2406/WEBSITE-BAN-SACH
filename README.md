@@ -1,0 +1,2 @@
+- This is a website that sells books written in python
+- Using python framework django
