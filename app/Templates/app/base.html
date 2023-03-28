@@ -20,21 +20,20 @@
         <link rel="stylesheet" href="{%static 'app/css/all.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{%static 'app/css/main.css' %}">
         <link rel="stylesheet" href="{% static 'app/css/newmain.css' %}">
+        <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+
         <!--link java script trên jquery cnd link để thiết kế slider-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!--link java script trên bootstrap-->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
         <script src= "{% static 'app/js/all.min.js' %}"></script>
         <script src= "{% static 'app/js/myscript.js' %}"></script>
         <script src= "{% static 'app/js/s3.js' %}"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-         <!--header-->
          <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
               <a class="navbar-brand" href="{% url 'home' %}">
@@ -67,7 +66,7 @@
                     <a class="nav-link" href="#">Giới thiệu</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled">Liên hệ</a>
+                    <a class="nav-link" href="#footer">Liên hệ</a>
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -86,8 +85,8 @@
                     <li><a class="dropdown-item" href="#">Thoát</a></li>
                   </ul>
                 </li>
-                <li class="nav-item" >
-                  <a class="nav-link" href="{% url 'cart' %}">Giỏ hàng</a>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'cart' %}"><i class="ti-shopping-cart"></i> Giỏ hàng</a>
                 </li>
                 <li class="nav-item" >
                   <a class="nav-link" href=#>Đăng nhập</a>
