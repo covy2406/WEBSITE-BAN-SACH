@@ -8,23 +8,27 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>WEB BAN SACH</title>
+        <title>website bán hàng</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--logo-->
-        <link rel="icon" href="{% static 'app/images/logo.jpg' %}">
+        <!--link css lấy trừ bootstrap để thiết kế header-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
         <link rel="stylesheet" href="{%static 'app/css/owl.carousel.min.css' %}">
-        <link rel="stylesheet" href="{%static 'app/css/all.min.css' %}">
+        {% comment %} <link rel="stylesheet" href="{%static 'app/css/all.min.css' %}"> {% endcomment %}
         <link rel="stylesheet" type="text/css" href="{%static 'app/css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'app/fonts/themify-icons/themify-icons.css' %}">
         <link rel="stylesheet" href="{% static 'app/css/newmain.css' %}">
+        <link rel="stylesheet" hrfef="{% static 'app/css/product.css' %}">
         <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
-
-        <!--link java script trên jquery cnd link để thiết kế slider-->
+        <link rel="stylesheet" href="{% static 'app/css/register.css' %}">
+        
+        <!--link javascript trên jquery cnd link để thiết kế slider-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!--link java script trên bootstrap-->
+        <!--link javascript trên bootstrap-->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -32,10 +36,41 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
         <script src= "{% static 'app/js/all.min.js' %}"></script>
         <script src= "{% static 'app/js/myscript.js' %}"></script>
-        <script src= "{% static 'app/js/s3.js' %}"></script>
+        <script src= "{% static 'app/js/owl.carousel.min.js' %}"></script>
+        <script src= "{% static 'app/js/cart.js' %}"></script>
+
+        <script type="text/javascript">
+          var user = '{{request.user}}'
+          function getCookie(name)
+          {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '')
+            {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++)
+                {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '='))
+                    {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+        </script>
+        
     </head>
     <body>
-         <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!--header-->
+        <nav class="navbar navbar-expand-lg bg-body-white navbar-light bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{%static 'app/images/logo.jpg' %}" width="50", height="50" />
@@ -51,7 +86,7 @@
                   
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Sản phẩm
+                      Products
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Milk</a></li>
@@ -64,10 +99,10 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Giới thiệu</a>
+                    <a class="nav-link" href="#container">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#footer">Liên hệ</a>
+                    <a class="nav-link " href="#footer">Contact</a> <!--disabled-->
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -75,32 +110,38 @@
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>
-              <ul class="navbar-nav me-auto my-2 my-lg-0">
+              <!--user icon-->
+              <ul class="navbar-nav me-auto mx-4 my-lg-0">
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    User
+                  <a class="nav-link dropdown-toggle" style="color: black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i> User
                   </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Trang cá nhân</a></li>
-                    <li><a class="dropdown-item" href="#">Đơn hàng</a></li>
+                  <ul class="dropdown-menu nav-item">
+                    <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="#">Đăng ký</a></li>
                     <li><a class="dropdown-item" href="#">Thoát</a></li>
                   </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'cart' %}"><i class="ti-shopping-cart"></i> Giỏ hàng</a>
-                </li>
-                <li class="nav-item" >
+      
+                {% comment %} <li class="nav-item" >
                   <a class="nav-link" href=#>Đăng nhập</a>
                 </li>
                 <li class="nav-item" >
                   <a class="nav-link" href=#>Đăng ký</a>
-                </li>
+                </li> {% endcomment %}
               </ul>
+              <div class="form-inline mx-4 my-lg-0">                
+                <a id="cart-icon" style="color: black" href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                <p id="cart-total">{{cartItems}}</p>
+              </div>
             </div>
         </nav>
         <!--main-->
 
         {% block banner_slider %}{% endblock banner_slider %}
+
+        {% block about_content %}{% endblock about_content %}
+
         {% block main-content %}{% endblock main-content %}
         <!--Giao diện cart-->
         {% block cart_content %}{% endblock cart_content %}
@@ -108,8 +149,8 @@
         {% block content_checkout %}{% endblock content_checkout %}
 
         <!--footer-->
-        {% comment %} <footer class="container-fluid bg-success text-center fixed-bottom p-2 m2-5">
-            copyright 2023 by ThaoVy
+        {% comment %} <footer class="container-fluid  text-center p-2 m2-5"> <!--fixed-bottom-->
+            copyright(c) 2023
         </footer> {% endcomment %}
         <div id="footer">
           <div class="social-list">
@@ -120,8 +161,10 @@
               <a href=""><i class="ti-twitter-alt"></i></a>
               <a href=""><i class="ti-linkedin"></i></a>
           </div>
-          <p class="copyright">Powered by <a href="">ThaoVy</a></p>
+          <p class="copyright">(c) 2023 Website. <a href="">All right reserved</a></p>
         </div>
+
         <script src="" async defer></script>
+        <script src= "{% static 'app/js/cart.js' %}"></script>
     </body>
 </html>
