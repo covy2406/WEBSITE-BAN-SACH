@@ -8,6 +8,7 @@ def home(request):
     products = Product.objects.all()
     context= {'products': products}
     return render(request, 'app/home.html',context)
+
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -18,6 +19,7 @@ def cart(request):
         order = {'get_cart_items' :0, 'get_cart_total': 0}
     context= {'items': items,'order': order}
     return render(request, 'app/cart.html',context)
+
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -28,6 +30,7 @@ def checkout(request):
         order = {'get_cart_items' :0, 'get_cart_total': 0}
     context= {'items': items,'order': order}
     return render(request, 'app/checkout.html',context)
+
 def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
